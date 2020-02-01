@@ -25,4 +25,11 @@ public class UserDaoImpl extends HibernateUtil implements UserDao {
         query.setParameter("id", userId);
         return query.getSingleResult();
     }
+
+    @Override
+    public User getUserByLogin(String login) {
+        TypedQuery<User> query = getEntityManager().createQuery("select u from User u where u.login = :login", User.class);
+        query.setParameter("login", login);
+        return query.getSingleResult();
+    }
 }

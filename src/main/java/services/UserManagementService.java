@@ -2,11 +2,11 @@ package services;
 
 import model.User;
 
-public interface UserManagementServices {
+public interface UserManagementService {
 
     void saveUser(User user);
 
-    void deleteUser(User user);
+    void deleteUserByUserId(long userId);
 
     boolean isUserLoginExist(String login);
 

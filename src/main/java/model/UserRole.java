@@ -17,4 +17,9 @@ public class UserRole {
 
     public UserRole() {
     }
+
+    public UserRole(UserRoleEnum name){
+        this.name = name;
+    }
+
 }

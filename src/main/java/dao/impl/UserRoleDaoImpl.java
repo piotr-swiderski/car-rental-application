@@ -4,7 +4,6 @@ import dao.UserRoleDao;
 import hibernate.util.HibernateUtil;
 import model.UserRole;
 import model.enums.UserRoleEnum;
-
 import javax.persistence.TypedQuery;
 import java.util.HashSet;
 import java.util.Set;

@@ -2,9 +2,7 @@ package services.impl;
 
 import dao.UserDao;
 import dao.impl.UserDaoImpl;
-import dao.impl.UserRoleDaoImpl;
 import model.User;
-import model.UserRole;
 import services.UserManagementService;
 
 import java.util.Optional;

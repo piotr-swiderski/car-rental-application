@@ -3,7 +3,6 @@ package dao.impl;
 import dao.EquipmentVersionDao;
 import hibernate.util.HibernateUtil;
 import model.EquipmentVersion;
-
 import javax.persistence.TypedQuery;
 
 public class EquipmentVersionDaoImpl extends HibernateUtil implements EquipmentVersionDao {

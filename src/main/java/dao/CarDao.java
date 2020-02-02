@@ -14,6 +14,8 @@ public interface CarDao {
 
     Set<Car> getCarsByMark(String mark);
 
+    Set<Car> getNoRentalCar();
+
     Set<Car> getCarsByStatus(String status);
 
     Car getCarByRegistrationNumber(String registrationNumber);

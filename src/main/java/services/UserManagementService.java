@@ -1,7 +1,6 @@
 package services;
 
 import model.User;
-import model.UserRole;
 
 public interface UserManagementService {
 

@@ -3,7 +3,6 @@ package dao.impl;
 import dao.ModelDao;
 import hibernate.util.HibernateUtil;
 import model.Model;
-
 import javax.persistence.TypedQuery;
 import java.util.HashSet;
 import java.util.Set;

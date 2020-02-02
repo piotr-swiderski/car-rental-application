@@ -1,7 +1,6 @@
 package dao;
 
 import model.Model;
-
 import java.util.Set;
 
 public interface ModelDao {

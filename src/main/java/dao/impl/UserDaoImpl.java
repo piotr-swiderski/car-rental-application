@@ -3,7 +3,6 @@ package dao.impl;
 import dao.UserDao;
 import hibernate.util.HibernateUtil;
 import model.User;
-
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import java.util.Optional;

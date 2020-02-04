@@ -4,7 +4,7 @@ import model.enums.UserRoleEnum;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import services.AdminCarManagementsService;
+import services.AdminCarManagementService;
 import services.UserCarManagementService;
 import services.UserManagementService;
 import services.impl.AdminCarManagementServiceImpl;
@@ -19,7 +19,7 @@ import static services.utils.ServiceUtil.CAR_STATUS_FREE;
 
 public class UserCarManagementServiceTest {
 
-    private AdminCarManagementsService adminService;
+    private AdminCarManagementService adminService;
     private UserCarManagementService userService;
     private UserManagementService userManagementService;
     private User user;
@@ -115,7 +115,7 @@ public class UserCarManagementServiceTest {
         Set<Car> cars = userService.searchCarByMark(MARK);
         userService.rentCar(car, user, Date.valueOf(LocalDate.of(2020, 12, 12)));
         //when
-        Set<CarRental> carRentals = adminService.getRentalCarInfo();
+        Set<CarRental> carRentals = adminService.getRentalCarsInformation();
         //then
         Assert.assertEquals(1, carRentals.size());
     }

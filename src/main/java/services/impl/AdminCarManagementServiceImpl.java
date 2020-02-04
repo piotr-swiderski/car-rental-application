@@ -49,7 +49,7 @@ public class AdminCarManagementServiceImpl implements AdminCarManagementService 
     }
 
     @Override
-    public Set<CarRental> getRentalCarInfo() {
+    public Set<CarRental> getRentalCarsInformation() {
         return carRentedDao.getRentedCarInfo();
     }
 }

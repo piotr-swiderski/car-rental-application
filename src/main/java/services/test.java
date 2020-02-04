@@ -89,7 +89,7 @@ public class test {
         userLogin.saveUser(user);
 
         userManagementService.rentCar(car, user, Date.valueOf(LocalDate.of(2020, 12, 12)));
-        Set<CarRental> carRentals = adminService.getRentalCarInfo();
+        Set<CarRental> carRentals = adminService.getRentalCarsInformation();
 
 
     }

@@ -17,6 +17,6 @@ public interface AdminCarManagementService {
 
     Set<Car> getRentedCar();
 
-    Set<CarRental> getRentalCarInfo();
+    Set<CarRental> getRentalCarsInformation();
 
 }

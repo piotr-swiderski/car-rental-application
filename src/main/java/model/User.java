@@ -1,7 +1,5 @@
 package model;
 
-import model.enums.UserRoleEnum;
-
 import javax.persistence.*;
 
 @Entity
@@ -10,6 +8,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private long id;
 
     @Column(name = "login")

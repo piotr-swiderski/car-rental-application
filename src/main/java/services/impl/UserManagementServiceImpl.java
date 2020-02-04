@@ -36,4 +36,9 @@ public class UserManagementServiceImpl implements UserManagementService {
         Optional<User> user = userDao.getUserByLogin(login);
         return user.map(value -> value.getPassword().equals(password)).orElse(false);
     }
+
+    @Override
+    public Optional<User> getUserById(long userId) {
+        return userDao.getUserById(userId);
+    }
 }

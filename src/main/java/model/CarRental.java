@@ -1,7 +1,9 @@
 package model;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 
 @Entity
 @Table(name = "car_rental")
@@ -11,6 +13,7 @@ public class CarRental {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @CreationTimestamp
     @Column(name = "data_form")
     private Date dateForm;
 
@@ -23,16 +26,15 @@ public class CarRental {
     @Column(name = "charge")
     private double charge;
 
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @ManyToOne() //(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "car_id")
     private Car car;
 
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @ManyToOne()//(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "user_id")
     private User user;
 
-    public CarRental(Date dateForm, Date dateTo, String status, double charge, Car car, User user) {
-        this.dateForm = dateForm;
+    public CarRental (Date dateTo, String status, double charge, Car car, User user) {
         this.dateTo = dateTo;
         this.status = status;
         this.charge = charge;
@@ -99,10 +101,8 @@ public class CarRental {
         this.user = user;
     }
 
-
     public static final class CarRentalBuilder {
         private long id;
-        private Date dateForm;
         private Date dateTo;
         private String status;
         private double charge;
@@ -121,10 +121,6 @@ public class CarRental {
             return this;
         }
 
-        public CarRentalBuilder withDateForm(Date dateForm) {
-            this.dateForm = dateForm;
-            return this;
-        }
 
         public CarRentalBuilder withDateTo(Date dateTo) {
             this.dateTo = dateTo;
@@ -152,7 +148,7 @@ public class CarRental {
         }
 
         public CarRental build() {
-            CarRental carRental = new CarRental(dateForm, dateTo, status, charge, car, user);
+            CarRental carRental = new CarRental(dateTo, status, charge, car, user);
             carRental.setId(id);
             return carRental;
         }

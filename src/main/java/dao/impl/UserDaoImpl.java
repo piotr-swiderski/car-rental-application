@@ -22,9 +22,13 @@ public class UserDaoImpl extends HibernateUtil implements UserDao {
 
     @Override
     public Optional<User> getUserById(long userId) {
-        TypedQuery<User> query = getEntityManager().createQuery("select u from User u where u.id = :id", User.class);
-        query.setParameter("id", userId);
-        return Optional.of(query.getSingleResult());
+        try {
+            TypedQuery<User> query = getEntityManager().createQuery("select u from User u where u.id = :id", User.class);
+            query.setParameter("id", userId);
+            return Optional.of(query.getSingleResult());
+        }catch (NoResultException e){
+            return Optional.empty();
+        }
     }
 
     @Override

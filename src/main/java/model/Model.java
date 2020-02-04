@@ -106,4 +106,77 @@ public class Model {
     public void setDoorsNumber(int doorsNumber) {
         this.doorsNumber = doorsNumber;
     }
+
+    public static final class ModelBuilder {
+        private int id;
+        private String name;
+        private String generation;
+        private String photoDirectory;
+        private String type;
+        private int seatsNumber;
+        private int doorsNumber;
+        private EquipmentVersion equipmentVersion;
+
+        private ModelBuilder() {
+        }
+
+        public static ModelBuilder aModel() {
+            return new ModelBuilder();
+        }
+
+        public ModelBuilder withId(int id) {
+            this.id = id;
+            return this;
+        }
+
+        public ModelBuilder withName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public ModelBuilder withGeneration(String generation) {
+            this.generation = generation;
+            return this;
+        }
+
+        public ModelBuilder withPhotoDirectory(String photoDirectory) {
+            this.photoDirectory = photoDirectory;
+            return this;
+        }
+
+        public ModelBuilder withType(String type) {
+            this.type = type;
+            return this;
+        }
+
+        public ModelBuilder withSeatsNumber(int seatsNumber) {
+            this.seatsNumber = seatsNumber;
+            return this;
+        }
+
+        public ModelBuilder withDoorsNumber(int doorsNumber) {
+            this.doorsNumber = doorsNumber;
+            return this;
+        }
+
+        public ModelBuilder withEquipmentVersion(EquipmentVersion equipmentVersion) {
+            this.equipmentVersion = equipmentVersion;
+            return this;
+        }
+
+        public Model build() {
+            Model model = new Model();
+            model.setId(id);
+            model.setName(name);
+            model.setGeneration(generation);
+            model.setPhotoDirectory(photoDirectory);
+            model.setType(type);
+            model.setSeatsNumber(seatsNumber);
+            model.setDoorsNumber(doorsNumber);
+            model.setEquipmentVersion(equipmentVersion);
+            return model;
+        }
+    }
 }
+
+

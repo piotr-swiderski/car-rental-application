@@ -3,12 +3,16 @@ package dao.impl;
 import dao.CarDao;
 import hibernate.util.HibernateUtil;
 import model.Car;
+import services.utils.ServiceUtil;
+
 import javax.persistence.TypedQuery;
 import java.util.HashSet;
 import java.util.Set;
 
+import static services.utils.ServiceUtil.CAR_STATUS_FREE;
+import static services.utils.ServiceUtil.CAR_STATUS_RENTED;
+
 public class CarDaoImpl extends HibernateUtil implements CarDao {
-    private static final String FREE_CAR_STATUS = "FREE";
 
     @Override
     public void saveCar(Car car) {
@@ -52,13 +56,6 @@ public class CarDaoImpl extends HibernateUtil implements CarDao {
     @Override
     public Set<Car> getAllCars() {
         TypedQuery<Car> query = getEntityManager().createQuery("select c from Car c", Car.class);
-        return new HashSet<>(query.getResultList());
-    }
-
-    @Override
-    public Set<Car> getNoRentalCar() {
-        TypedQuery<Car> query = getEntityManager().createQuery("select c from Car c where c.status = :status", Car.class);
-        query.setParameter("status",FREE_CAR_STATUS);
         return new HashSet<>(query.getResultList());
     }
 

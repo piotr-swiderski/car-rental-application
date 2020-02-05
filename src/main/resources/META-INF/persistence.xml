@@ -21,12 +21,12 @@
             <property name="javax.persistence.jdbc.url"
                       value="jdbc:mysql://localhost:3306/car_rental_db?useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw&amp;useSSL=false&amp;allowPublicKeyRetrieval=true"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
-            <property name="hibernate.jdbc.time_zone" value="Europe/Warsaw"/>
+<!--            <property name="hibernate.jdbc.time_zone" value="Europe/Warsaw"/>-->
             <!--     <property name="hibernate.hbm2ddl.auto" value="update"/>-->
             <property name="hibernate.hbm2ddl.auto" value="create"/>
             <property name="hibernate.show_sql" value="true"/>
-            <property name="hibernate.connection.useUnicode" value="true"/>
-            <property name="hibernate.connection.characterEncoding" value="latin2"/>
+<!--            <property name="hibernate.connection.useUnicode" value="true"/>-->
+<!--            <property name="hibernate.connection.characterEncoding" value="latin2"/>-->
 
         </properties>
     </persistence-unit>

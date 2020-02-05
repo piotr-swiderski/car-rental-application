@@ -27,7 +27,7 @@ public class User {
     private String address;
 
     @Column(name = "status")
-    private String status;
+    private String status = "ACTIVE";
 
     @Column(name = "phone")
     private String phone;

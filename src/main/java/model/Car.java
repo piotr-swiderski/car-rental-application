@@ -32,7 +32,7 @@ public class Car {
     private Model model;
 
     @Column(name = "staus")
-    private String status;
+    private String status = "FREE";
 
     public Car(String registrationNumber, String mark, int fuel_level, int productionYear, String carConditionNode, Model model, String status) {
         this.registrationNumber = registrationNumber;

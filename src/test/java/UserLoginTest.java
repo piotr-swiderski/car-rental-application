@@ -9,7 +9,6 @@ import services.impl.UserManagementServiceImpl;
 
 import java.util.Optional;
 
-import static services.utils.ServiceUtil.CAR_STATUS_FREE;
 
 public class UserLoginTest {
 
@@ -22,7 +21,6 @@ public class UserLoginTest {
         userToSave = User.UserBuilder.anUser()
                 .withName("user")
                 .withRole(new UserRole(UserRoleEnum.INDIVIDUAL_CLIENT))
-                .withStatus(CAR_STATUS_FREE)
                 .withPhone("797051304")
                 .withSurname("surname")
                 .withPassword("password")

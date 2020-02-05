@@ -3,16 +3,12 @@ package dao.impl;
 import dao.CarDao;
 import hibernate.util.HibernateUtil;
 import model.Car;
-import services.utils.ServiceUtil;
 
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
-
-import static services.utils.ServiceUtil.CAR_STATUS_FREE;
-import static services.utils.ServiceUtil.CAR_STATUS_RENTED;
 
 public class CarDaoImpl extends HibernateUtil implements CarDao {
 

@@ -11,7 +11,6 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Set;
 
-import static services.utils.ServiceUtil.CAR_STATUS_FREE;
 
 public class test {
 
@@ -66,7 +65,6 @@ public class test {
                 .withProductionYear(2012)
                 .withMode(model)
                 .withCarConditionNode("EXTRA")
-                .withStatus(CAR_STATUS_FREE)
                 .build();
 
         Car car2 = Car.CarBuilder.aCar()
@@ -76,7 +74,6 @@ public class test {
                 .withProductionYear(2012)
                 .withMode(model)
                 .withCarConditionNode("EXTRA")
-                .withStatus(CAR_STATUS_FREE)
                 .build();
 
         System.out.println(userLogin.isUserLoginExist("user"));

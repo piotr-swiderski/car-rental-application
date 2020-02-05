@@ -5,8 +5,10 @@ import hibernate.util.HibernateUtil;
 import model.Car;
 import services.utils.ServiceUtil;
 
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import static services.utils.ServiceUtil.CAR_STATUS_FREE;
@@ -26,10 +28,14 @@ public class CarDaoImpl extends HibernateUtil implements CarDao {
 
 
     @Override
-    public Car getCarById(long carId) {
-        TypedQuery<Car> query = getEntityManager().createQuery("select c from Car c where c.id = :id", Car.class);
-        query.setParameter("id", carId);
-        return query.getSingleResult();
+    public Optional<Car> getCarById(long carId) {
+        try {
+            TypedQuery<Car> query = getEntityManager().createQuery("select c from Car c where c.id = :id", Car.class);
+            query.setParameter("id", carId);
+            return Optional.of(query.getSingleResult());
+        }catch (NoResultException e){
+            return Optional.empty();
+        }
     }
 
     @Override
@@ -47,10 +53,14 @@ public class CarDaoImpl extends HibernateUtil implements CarDao {
     }
 
     @Override
-    public Car getCarByRegistrationNumber(String registrationNumber) {
-        TypedQuery<Car> query = getEntityManager().createQuery("select c from Car c where c.registrationNumber = :registration", Car.class);
-        query.setParameter("registration", registrationNumber);
-        return query.getSingleResult();
+    public Optional<Car> getCarByRegistrationNumber(String registrationNumber) {
+        try {
+            TypedQuery<Car> query = getEntityManager().createQuery("select c from Car c where c.registrationNumber = :registration", Car.class);
+            query.setParameter("registration", registrationNumber);
+            return Optional.of(query.getSingleResult());
+        }catch (NoResultException e){
+            return Optional.empty();
+        }
     }
 
     @Override

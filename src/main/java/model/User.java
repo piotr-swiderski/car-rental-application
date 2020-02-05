@@ -3,7 +3,7 @@ package model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user")
+@Table(name = "user", uniqueConstraints = {@UniqueConstraint(columnNames = "login")})
 public class User {
 
     @Id
@@ -11,7 +11,7 @@ public class User {
     @Column(name = "user_id")
     private long id;
 
-    @Column(name = "login")
+    @Column(name = "login", length = 50)
     private String login;
 
     @Column(name = "password")

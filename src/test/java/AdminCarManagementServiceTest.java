@@ -19,7 +19,7 @@ public class AdminCarManagementServiceTest {
     private Car car;
     private Car car_second;
     private Model model;
-    private  final String MARK = "TOYOTA";
+    private final String MARK = "TOYOTA";
 
 
     @Before
@@ -91,14 +91,34 @@ public class AdminCarManagementServiceTest {
     }
 
     @Test
-    public void should_return_all_added_cars(){
+    public void should_return_all_added_cars() {
         //given
         service.addCar(car);
         service.addCar(car_second);
         //when
         Set<Car> allCars = service.getAllCars();
         //then
-        Assert.assertEquals(2,allCars.size());
+        Assert.assertEquals(2, allCars.size());
+    }
+
+    @Test
+    public void should_return_true_because_car_with_registration_numb_is_exist() {
+        //given
+        service.addCar(car);
+        //when
+        boolean carRegistrationNumberExist = service.isCarRegistrationNumberExist(car.getRegistrationNumber());
+        //then
+        Assert.assertEquals(true, carRegistrationNumberExist);
+    }
+
+    @Test
+    public void should_return_false_because_car_with_registration_numb_is_exist() {
+        //given
+        service.addCar(car);
+        //when
+        boolean carRegistrationNumberExist = service.isCarRegistrationNumberExist(car.getRegistrationNumber() + "WRONG");
+        //then
+        Assert.assertEquals(false, carRegistrationNumberExist);
     }
 
 }

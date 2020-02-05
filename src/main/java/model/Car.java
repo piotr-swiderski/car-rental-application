@@ -3,7 +3,7 @@ package model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "car")
+@Table(name = "car", uniqueConstraints = {@UniqueConstraint(columnNames = "registration_number")})
 public class Car {
 
     @Id
@@ -11,7 +11,8 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "registration_number")
+
+    @Column(name = "registration_number", length = 50)
     private String registrationNumber;
 
     @Column(name = "mark")

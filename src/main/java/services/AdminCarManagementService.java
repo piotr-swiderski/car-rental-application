@@ -11,6 +11,8 @@ public interface AdminCarManagementService {
 
     void deletedCarById(long id);
 
+    boolean isCarRegistrationNumberExist(String carRegistrationNumber);
+
     Set<Car> getAllCars();
 
     Set<Car> getNotRentedCar();

@@ -8,6 +8,7 @@ import model.Car;
 import model.CarRental;
 import services.AdminCarManagementService;
 
+import java.util.Optional;
 import java.util.Set;
 
 import static services.utils.ServiceUtil.CAR_STATUS_FREE;
@@ -51,5 +52,11 @@ public class AdminCarManagementServiceImpl implements AdminCarManagementService 
     @Override
     public Set<CarRental> getRentalCarsInformation() {
         return carRentedDao.getRentedCarInfo();
+    }
+
+    @Override
+    public boolean isCarRegistrationNumberExist(String carRegistrationNumber) {
+        Optional<Car> carByRegistrationNumber = carDao.getCarByRegistrationNumber(carRegistrationNumber);
+        return carByRegistrationNumber.isPresent();
     }
 }

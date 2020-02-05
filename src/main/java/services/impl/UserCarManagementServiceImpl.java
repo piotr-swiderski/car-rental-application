@@ -32,8 +32,8 @@ public class UserCarManagementServiceImpl implements UserCarManagementService {
 
     @Override
     public boolean isCarRentedById(long id) {
-        Car car = carDao.getCarById(id);
-        return car.getStatus().equals(CAR_STATUS_RETURNED);
+        Optional<Car> optionalCar = carDao.getCarById(id);
+        return optionalCar.get().getStatus().equals(CAR_STATUS_RETURNED);
     }
 
     @Override

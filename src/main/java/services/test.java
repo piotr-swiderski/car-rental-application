@@ -61,7 +61,7 @@ public class test {
 
         Car car = Car.CarBuilder.aCar()
                 .withMark("TOYOTA")
-                .withRegistrationNumber("BL123")
+                .withRegistrationNumber("BL1243")
                 .withFuel_level(300)
                 .withProductionYear(2012)
                 .withMode(model)
@@ -90,6 +90,8 @@ public class test {
 
         userManagementService.rentCar(car, user, Date.valueOf(LocalDate.of(2020, 12, 12)));
         Set<CarRental> carRentals = adminService.getRentalCarsInformation();
+
+        System.out.println(adminService.isCarRegistrationNumberExist("dsadasd"));
 
 
     }

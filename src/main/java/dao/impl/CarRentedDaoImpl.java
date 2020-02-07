@@ -1,10 +1,8 @@
 package dao.impl;
 
-import com.sun.deploy.security.SelectableSecurityManager;
 import dao.CarRentedDao;
 import hibernate.util.HibernateUtil;
 import model.CarRental;
-import services.utils.ServiceUtil;
 
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;

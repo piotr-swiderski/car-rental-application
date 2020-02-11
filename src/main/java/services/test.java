@@ -85,7 +85,7 @@ public class test {
         adminService.addCar(car2);
         userLogin.saveUser(user);
 
-        userManagementService.rentCar(car, user, Date.valueOf(LocalDate.of(2020, 12, 12)));
+        //userManagementService.rentCar(car, user, Date.valueOf(LocalDate.of(2020, 12, 12)));
         Set<CarRental> carRentals = adminService.getRentalCarsInformation();
 
         System.out.println(adminService.isCarRegistrationNumberExist("dsadasd"));

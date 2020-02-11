@@ -113,7 +113,7 @@ public class UserCarManagementServiceTest {
         adminService.addCar(car);
         userManagementService.saveUser(user);
         Set<Car> cars = userService.searchCarByMark(MARK);
-        userService.rentCar(car, user, Date.valueOf(LocalDate.of(2020, 12, 12)));
+        userService.rentCar(car.getId(), user.getId(), LocalDate.now(), LocalDate.of(2020,02,20));
         //when
         Set<CarRental> carRentals = adminService.getRentalCarsInformation();
         //then

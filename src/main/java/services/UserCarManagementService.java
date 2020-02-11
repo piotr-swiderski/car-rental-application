@@ -5,6 +5,8 @@ import model.Model;
 import model.User;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.util.Optional;
 import java.util.Set;
 
 public interface UserCarManagementService {
@@ -16,9 +18,11 @@ public interface UserCarManagementService {
 
     Set<Car> getNotRentalCar();
 
-    void rentCar(Car car, User user, Date toData);
+    void rentCar(long carId, long userId, LocalDate fromDate, LocalDate toData);
 
     void returnCarById(long rentedCarId, long userId);
+
+    Optional<Car> getCarById(Long Id);
 
 
 }

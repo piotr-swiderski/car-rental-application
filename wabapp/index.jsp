@@ -36,11 +36,11 @@
     <%--    </header>--%>
 
 
-    <c:if test="${carsToRent.size() > 0}">
+    <c:if test="${cars.size() > 0}">
     <h2 class="text-center">Nasze dostępene sacmochody</h2>
     <br>
     <div class="row">
-        <c:forEach items="${carsToRent}" var="car">
+        <c:forEach items="${cars}" var="car">
             <div class="card-body d-flex flex-column align-items-start">
                 <strong class="d-inline-block mb-2 text-primary">${car.model.name}</strong>
                 <h3 class="mb-0">
@@ -48,23 +48,21 @@
                 </h3>
                 <div class="mb-1 text-muted">_</div>
                 <p class="card-text mb-auto">${car.model.equipmentVersion.equipmentDescription}</p>
-                <br>
-                <div class="card-body d-flex flex-column align-items-start">
+                <form action="index" method="post">
                     <div class="form-group">
                         <label>Od kiedy chesz wypożyczyć auto</label>
                         <input type="date" name="fromDate" max="3000-12-31"
-                               min="1000-01-01" class="form-control">
+                               min="1000-01-01" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Do kiedy chcesz wypozyczyć auto</label>
                         <input type="date" name="toDate" min="2020-01-01"
-                               max="3000-12-31" class="form-control">
+                               max="3000-12-31" class="form-control" required>
                     </div>
                     <button value="${car.id}" class="btn btn-primary my-2 my-sm-0" name="carsToRent"
                             type="submit">Wypożycz auto
                     </button>
-                    </form>
-                </div>
+                </form>
             </div>
             <img class="card-img-right flex-auto d-none d-lg-block" data-src="holder.js/200x250?theme=thumb"
                  alt="Thumbnail [200x250]" style="width: 400px; height: 250px;"

@@ -3,6 +3,7 @@ package model;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -15,10 +16,10 @@ public class CarRental {
 
     @CreationTimestamp
     @Column(name = "data_form")
-    private Date dateForm;
+    private LocalDate dateForm;
 
     @Column(name = "date_to")
-    private Date dateTo;
+    private LocalDate dateTo;
 
     @Column(name = "status")
     private String status;
@@ -34,7 +35,7 @@ public class CarRental {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public CarRental (Date dateTo, String status, double charge, Car car, User user) {
+    public CarRental (LocalDate dateTo, String status, double charge, Car car, User user) {
         this.dateTo = dateTo;
         this.status = status;
         this.charge = charge;
@@ -53,19 +54,19 @@ public class CarRental {
         this.id = id;
     }
 
-    public Date getDateForm() {
+    public LocalDate getDateForm() {
         return dateForm;
     }
 
-    public void setDateForm(Date dateForm) {
+    public void setDateForm(LocalDate dateForm) {
         this.dateForm = dateForm;
     }
 
-    public Date getDateTo() {
+    public LocalDate getDateTo() {
         return dateTo;
     }
 
-    public void setDateTo(Date dateTo) {
+    public void setDateTo(LocalDate dateTo) {
         this.dateTo = dateTo;
     }
 
@@ -103,7 +104,7 @@ public class CarRental {
 
     public static final class CarRentalBuilder {
         private long id;
-        private Date dateTo;
+        private LocalDate dateTo;
         private String status;
         private double charge;
         private Car car;
@@ -122,7 +123,7 @@ public class CarRental {
         }
 
 
-        public CarRentalBuilder withDateTo(Date dateTo) {
+        public CarRentalBuilder withDateTo(LocalDate dateTo) {
             this.dateTo = dateTo;
             return this;
         }

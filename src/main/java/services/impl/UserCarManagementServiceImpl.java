@@ -48,16 +48,21 @@ public class UserCarManagementServiceImpl implements UserCarManagementService {
 
 
     @Override
-    public void rentCar(Car car, User user, Date toData) {
-        CarRental carRental = CarRental.CarRentalBuilder.aCarRental()
-                .withUser(user)
-                .withCar(car)
-                .withDateTo(toData)
-                .withCharge(200)
-                .withStatus(CAR_STATUS_RENTED)
-                .build();
+    public void rentCar(long carId, long userId, LocalDate fromDate, LocalDate toData) {
+        boolean isUserExist = userDao.getUserById(userId).isPresent();
+        boolean isCarExist = carDao.getCarById(userId).isPresent();
 
-        carRentedDao.saveRentedCar(carRental);
+        if (isUserExist && isCarExist) {
+            CarRental carRental = CarRental.CarRentalBuilder.aCarRental()
+                    .withUser(userDao.getUserById(userId).get())
+                    .withCar(carDao.getCarById(userId).get())
+                    .withDateTo(toData)
+                    .withCharge(200)
+                    .withStatus(CAR_STATUS_RENTED)
+                    .build();
+
+            carRentedDao.saveRentedCar(carRental);
+        }
     }
 
     @Override
@@ -76,6 +81,10 @@ public class UserCarManagementServiceImpl implements UserCarManagementService {
         }
     }
 
+    @Override
+    public Optional<Car> getCarById(Long Id) {
+        return carDao.getCarById(Id);
+    }
 
     private void setStatusCar(Car car, String status) {
         car.setStatus(status);

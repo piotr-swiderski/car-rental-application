@@ -31,7 +31,7 @@ public class Car {
     @JoinColumn(name = "model")
     private Model model;
 
-    @Column(name = "staus")
+    @Column(name = "status")
     private String status = "FREE";
 
     public Car(String registrationNumber, String mark, int fuel_level, int productionYear, String carConditionNode, Model model, String status) {

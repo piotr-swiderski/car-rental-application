@@ -21,42 +21,11 @@
 </head>
 <body>
 
+<%@include file="header.jsp" %>
+
+
 <div class="container p-3 mb-2">
 
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">CarRental</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Cars<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="admin.jsp">Moje konto</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-
-
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Disabled</a>
-                    </li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search cars by mark"
-                           aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-            </div>
-        </nav>
-        <br>
-    </header>
 
     <%--    <h1 class="masthead-heading text-uppercase mb-0">Start Bootstrap</h1>--%>
     <%--    <header class="text-white text-center">--%>
@@ -72,25 +41,35 @@
     <br>
     <div class="row">
         <c:forEach items="${carsToRent}" var="car">
-
-            <div class="col-md-6">
-                <div class="card flex-md-row mb-4 shadow-sm h-md-250">
-                    <div class="card-body d-flex flex-column align-items-start">
-                        <strong class="d-inline-block mb-2 text-primary">${car.mark}</strong>
-                        <h3 class="mb-0">
-                            <a class="text-dark" href="#">${car.model.name}</a>
-                        </h3>
-                        <div class="mb-1 text-muted">Nov 12</div>
-                        <p class="card-text mb-auto">${car.model.equipmentVersion.equipmentDescription}</p>
-                        <a href="#">Dowiedz sie wiecej</a>
+            <div class="card-body d-flex flex-column align-items-start">
+                <strong class="d-inline-block mb-2 text-primary">${car.model.name}</strong>
+                <h3 class="mb-0">
+                    <a class="text-dark">${car.mark}</a>
+                </h3>
+                <div class="mb-1 text-muted">_</div>
+                <p class="card-text mb-auto">${car.model.equipmentVersion.equipmentDescription}</p>
+                <br>
+                <div class="card-body d-flex flex-column align-items-start">
+                    <div class="form-group">
+                        <label>Od kiedy chesz wypożyczyć auto</label>
+                        <input type="date" name="fromDate" max="3000-12-31"
+                               min="1000-01-01" class="form-control">
                     </div>
-                    <img class="card-img-right flex-auto d-none d-lg-block" data-src="holder.js/200x250?theme=thumb"
-                         alt="Thumbnail [200x250]" style="width: 200px; height: 250px;"
-                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Toyota_Corolla_Limousine_Hybrid_Genf_2019_1Y7A5576.jpg/800px-Toyota_Corolla_Limousine_Hybrid_Genf_2019_1Y7A5576.jpg"
-                         data-holder-rendered="true">
+                    <div class="form-group">
+                        <label>Do kiedy chcesz wypozyczyć auto</label>
+                        <input type="date" name="toDate" min="2020-01-01"
+                               max="3000-12-31" class="form-control">
+                    </div>
+                    <button value="${car.id}" class="btn btn-primary my-2 my-sm-0" name="carsToRent"
+                            type="submit">Wypożycz auto
+                    </button>
+                    </form>
                 </div>
             </div>
-
+            <img class="card-img-right flex-auto d-none d-lg-block" data-src="holder.js/200x250?theme=thumb"
+                 alt="Thumbnail [200x250]" style="width: 400px; height: 250px;"
+                 src=${car.model.photoDirectory}
+                         data-holder-rendered="true">
         </c:forEach>
     </div>
 </div>

@@ -11,6 +11,8 @@ public interface CarDao {
 
     void deleteCarById(long carId);
 
+    void setCarStatus(long carId, String status);
+
     Optional<Car> getCarById(long carId);
 
     Set<Car> getCarsByMark(String mark);

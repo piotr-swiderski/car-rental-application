@@ -16,4 +16,6 @@ public interface UserManagementService {
 
     Optional<User> getUserById(long userId);
 
+    Optional<User> getUserByLogin(String userLogin);
+
 }

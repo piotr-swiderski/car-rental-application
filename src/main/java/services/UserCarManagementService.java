@@ -18,7 +18,7 @@ public interface UserCarManagementService {
 
     Set<Car> getNotRentalCar();
 
-    void rentCar(long carId, long userId, LocalDate fromDate, LocalDate toData);
+    void rentCar(long carId, long userId, LocalDate fromDate, LocalDate toDate);
 
     void returnCarById(long rentedCarId, long userId);
 

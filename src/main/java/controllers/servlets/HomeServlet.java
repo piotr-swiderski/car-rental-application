@@ -1,8 +1,10 @@
 package controllers.servlets;
 
 import model.Car;
+import model.User;
 import services.UserCarManagementService;
 import services.impl.UserCarManagementServiceImpl;
+import services.impl.UserManagementServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,12 +47,16 @@ public class HomeServlet extends HttpServlet {
         LocalDate fromDate = LocalDate.parse(req.getParameter(CAR_TO_RENT_FROM_DATE));
 
 
+        new UserManagementServiceImpl().saveUser(User.UserBuilder.anUser().withLogin("asd").withPassword("asd").build());
+
         Optional<Car> carById = service.getCarById(carId);
         if (!carById.isPresent()) {
+            Set<Car> notRentalCar = service.getNotRentalCar();
+            req.setAttribute(USER_CARS_TO_RENT, notRentalCar);
             req.getRequestDispatcher("/index.jsp").forward(req, resp); // error
             return;
         }
-        service.rentCar(carId, userId, toDate, fromDate);
+        service.rentCar(carId, userId, fromDate, toDate);
 
         Set<Car> notRentalCar = service.getNotRentalCar();
         req.setAttribute(USER_CARS_TO_RENT, notRentalCar);

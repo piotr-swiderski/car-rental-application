@@ -48,20 +48,26 @@ public class UserCarManagementServiceImpl implements UserCarManagementService {
 
 
     @Override
-    public void rentCar(long carId, long userId, LocalDate fromDate, LocalDate toData) {
+    public void rentCar(long carId, long userId, LocalDate fromDate, LocalDate toDate) {
         boolean isUserExist = userDao.getUserById(userId).isPresent();
         boolean isCarExist = carDao.getCarById(userId).isPresent();
 
         if (isUserExist && isCarExist) {
+            Car car = carDao.getCarById(userId).get();
+            carDao.setCarStatus(carId, CAR_STATUS_RENTED);
+
+
             CarRental carRental = CarRental.CarRentalBuilder.aCarRental()
                     .withUser(userDao.getUserById(userId).get())
-                    .withCar(carDao.getCarById(userId).get())
-                    .withDateTo(toData)
+                    .withCar(car)
+                    .withDateTo(toDate)
+                    .withDateFrom(fromDate)
                     .withCharge(200)
                     .withStatus(CAR_STATUS_RENTED)
                     .build();
 
             carRentedDao.saveRentedCar(carRental);
+
         }
     }
 

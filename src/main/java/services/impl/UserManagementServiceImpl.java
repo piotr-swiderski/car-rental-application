@@ -41,4 +41,9 @@ public class UserManagementServiceImpl implements UserManagementService {
     public Optional<User> getUserById(long userId) {
         return userDao.getUserById(userId);
     }
+
+    @Override
+    public Optional<User> getUserByLogin(String userLogin) {
+        return userDao.getUserByLogin(userLogin);
+    }
 }

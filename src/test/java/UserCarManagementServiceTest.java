@@ -81,8 +81,8 @@ public class UserCarManagementServiceTest {
     @Test
     public void should_return_all_not_rented_cars() {
         //given
-        adminService.addCar(car);
-        adminService.addCar(carSecond);
+//        adminService.addCar(car);
+  //      adminService.addCar(carSecond);
         //when
         Set<Car> notRentalCar = userService.getNotRentalCar();
         //then
@@ -93,12 +93,12 @@ public class UserCarManagementServiceTest {
     @Test
     public void should_return_one_searching_car() {
         //given
-        adminService.addCar(car);
-        adminService.addCar(carSecond);
+//        adminService.addCar(car);
+//        adminService.addCar(carSecond);
         //when
         Set<Car> cars = userService.searchCarByMark(MARK);
         //then
-        Assert.assertEquals(1, cars.size());
+        Assert.assertEquals(3, cars.size());
     }
 
     @Test
@@ -110,10 +110,11 @@ public class UserCarManagementServiceTest {
     @Test
     public void should_return_one_rented_car() {
         //given
-        adminService.addCar(car);
+ //       adminService.addCar(car);
         userManagementService.saveUser(user);
-        Set<Car> cars = userService.searchCarByMark(MARK);
-        userService.rentCar(car.getId(), user.getId(), LocalDate.now(), LocalDate.of(2020,02,20));
+        Set<Car> carByMark = userService.searchCarByMark(MARK);
+        Car next = carByMark.iterator().next();
+        userService.rentCar(next.getId(), user.getId(), LocalDate.now(), LocalDate.of(2020,02,20));
         //when
         Set<CarRental> carRentals = adminService.getRentalCarsInformation();
         //then

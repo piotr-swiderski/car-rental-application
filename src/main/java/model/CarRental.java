@@ -4,7 +4,6 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Table(name = "car_rental")
@@ -14,9 +13,8 @@ public class CarRental {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @CreationTimestamp
-    @Column(name = "data_form")
-    private LocalDate dateForm;
+    @Column(name = "date_from")
+    private LocalDate dateFrom;
 
     @Column(name = "date_to")
     private LocalDate dateTo;
@@ -35,8 +33,9 @@ public class CarRental {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public CarRental (LocalDate dateTo, String status, double charge, Car car, User user) {
+    public CarRental (LocalDate dateTo, LocalDate dateFrom, String status, double charge, Car car, User user) {
         this.dateTo = dateTo;
+        this.dateFrom = dateFrom;
         this.status = status;
         this.charge = charge;
         this.car = car;
@@ -54,12 +53,12 @@ public class CarRental {
         this.id = id;
     }
 
-    public LocalDate getDateForm() {
-        return dateForm;
+    public LocalDate getDateFrom() {
+        return dateFrom;
     }
 
-    public void setDateForm(LocalDate dateForm) {
-        this.dateForm = dateForm;
+    public void setDateFrom(LocalDate dateForm) {
+        this.dateFrom = dateForm;
     }
 
     public LocalDate getDateTo() {
@@ -105,6 +104,7 @@ public class CarRental {
     public static final class CarRentalBuilder {
         private long id;
         private LocalDate dateTo;
+        private LocalDate dateFrom;
         private String status;
         private double charge;
         private Car car;
@@ -125,6 +125,11 @@ public class CarRental {
 
         public CarRentalBuilder withDateTo(LocalDate dateTo) {
             this.dateTo = dateTo;
+            return this;
+        }
+
+        public CarRentalBuilder withDateFrom(LocalDate dateFrom) {
+            this.dateFrom = dateFrom;
             return this;
         }
 
@@ -149,7 +154,7 @@ public class CarRental {
         }
 
         public CarRental build() {
-            CarRental carRental = new CarRental(dateTo, status, charge, car, user);
+            CarRental carRental = new CarRental(dateTo, dateFrom, status, charge, car, user);
             carRental.setId(id);
             return carRental;
         }

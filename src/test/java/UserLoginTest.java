@@ -19,12 +19,12 @@ public class UserLoginTest {
     public void setUp() {
         userManagementService = new UserManagementServiceImpl();
         userToSave = User.UserBuilder.anUser()
-                .withName("user")
+                .withName("usernew")
                 .withRole(new UserRole(UserRoleEnum.INDIVIDUAL_CLIENT))
                 .withPhone("797051304")
                 .withSurname("surname")
                 .withPassword("password")
-                .withLogin("user")
+                .withLogin("usernew")
                 .withAddress("Address 123")
                 .build();
     }
@@ -42,10 +42,13 @@ public class UserLoginTest {
     @Test
     public void should_delete_user() {
         //given
-        userManagementService.saveUser(userToSave);
-        userManagementService.deleteUserByUserId(userToSave.getId());
+//        userManagementService.saveUser(userToSave);
+        String userLogin = "usernew";
+        User userByLogin = userManagementService.getUserByLogin(userLogin).get();
+
+        userManagementService.deleteUserByUserId(userByLogin.getId());
         //when
-        Optional<User> userById = userManagementService.getUserById(userToSave.getId());
+        Optional<User> userById = userManagementService.getUserById(userByLogin.getId());
         //then
         Assert.assertEquals(false, userById.isPresent());
     }
@@ -73,7 +76,7 @@ public class UserLoginTest {
     @Test
     public void should_return_true_because_login_and_pass_is_valid() {
         //given
-        userManagementService.saveUser(userToSave);
+//        userManagementService.saveUser(userToSave);
         String password = userToSave.getPassword();
         String login = userToSave.getLogin();
         //when
@@ -85,7 +88,7 @@ public class UserLoginTest {
     @Test
     public void should_return_false_because_login_and_pass_is_not_valid() {
         //given
-        userManagementService.saveUser(userToSave);
+//        userManagementService.saveUser(userToSave);
         String password = userToSave.getPassword() + "wrong";
         String login = userToSave.getLogin();
         //when

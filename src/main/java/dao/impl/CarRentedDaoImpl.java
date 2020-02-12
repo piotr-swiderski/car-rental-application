@@ -1,5 +1,6 @@
 package dao.impl;
 
+import dao.AbstractDao;
 import dao.CarRentedDao;
 import hibernate.util.HibernateUtil;
 import model.CarRental;
@@ -12,22 +13,22 @@ import java.util.Set;
 
 import static services.utils.ServiceUtil.CAR_STATUS_RENTED;
 
-public class CarRentedDaoImpl extends HibernateUtil implements CarRentedDao {
+public class CarRentedDaoImpl extends AbstractDao implements CarRentedDao {
 
     @Override
     public void saveRentedCar(CarRental carRental) {
-        save(carRental);
+        hibernateUtil.save(carRental);
     }
 
     @Override
     public void deleteCarRent(long carRentId) {
-        delete(CarRental.class, carRentId);
+        hibernateUtil.delete(CarRental.class, carRentId);
     }
 
     @Override
     public Set<CarRental> getRentedCarInfo() {
         try {
-            TypedQuery<CarRental> query = getEntityManager().createQuery("SELECT c from CarRental c where c.status = :status", CarRental.class);
+            TypedQuery<CarRental> query = entityManager.createQuery("SELECT c from CarRental c where c.status = :status", CarRental.class);
             query.setParameter("status", CAR_STATUS_RENTED);
             return new HashSet<>(query.getResultList());
         }catch (NullPointerException e){
@@ -38,7 +39,7 @@ public class CarRentedDaoImpl extends HibernateUtil implements CarRentedDao {
     @Override
     public Optional<CarRental> getRentedCarById(long rentCarId) {
         try{
-            TypedQuery<CarRental> query = getEntityManager().createQuery("SELECT c from CarRental c where c.id = :id", CarRental.class);
+            TypedQuery<CarRental> query = entityManager.createQuery("SELECT c from CarRental c where c.id = :id", CarRental.class);
             query.setParameter("id", rentCarId);
             return Optional.of(query.getSingleResult());
         }catch (NoResultException e){

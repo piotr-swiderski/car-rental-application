@@ -1,6 +1,8 @@
 package controllers.servlets;
 
 import model.User;
+import model.UserRole;
+import model.enums.UserRoleEnum;
 import services.impl.UserManagementServiceImpl;
 
 import javax.servlet.ServletException;
@@ -50,6 +52,7 @@ public class RegistrationServlet extends HttpServlet {
                 .withAddress(userAddress)
                 .withPhone(userPhone)
                 .withStatus(USER_STATUS)
+                .withRole(new UserRole(UserRoleEnum.INDIVIDUAL_CLIENT))
                 .build();
 
         service.saveUser(user);

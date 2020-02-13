@@ -34,6 +34,9 @@
             <input type="password" class="form-control" id="userPassword" placeholder="Haslo uzytkownika"
                    name="userPassword" required>
         </div>
+        <div class="checkbox">
+            <label><input type="checkbox" name="remember"> Remember me</label>
+        </div>
         <button type="submit" class="btn btn-primary center-pill">Login</button>
     </form>
     <a href="registration" class="btn btn-primary center-pill" rel="regisration">Rejestracja</a>

@@ -66,9 +66,6 @@
             <input type="text" class="form-control" id="equipmentDescription" placeholder="Opis samochodu"
                    name="equipmentDescription" required>
         </div>
-        <div class="checkbox">
-            <label><input type="checkbox" name="remember"> Remember me</label>
-        </div>
         <button type="submit" class="btn btn-primary center-pill">Submit</button>
     </form>
 </div>

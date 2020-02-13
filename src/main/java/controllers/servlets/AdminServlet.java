@@ -6,7 +6,6 @@ import model.EquipmentVersion;
 import model.Model;
 import services.AdminCarManagementService;
 import services.impl.AdminCarManagementServiceImpl;
-import services.utils.ServiceUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
